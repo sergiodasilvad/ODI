@@ -59,21 +59,34 @@ public class Bank {
        
         return aCustomer;
     }
-    
 
+    public Collection<Account> getAccounts() {
+        return accounts;
+    }
+
+    public Collection<Customer> getCustomers() {
+        return customers;
+    }
+    
+    
     /**
      *
      * @param number
      * @param name
      * @param rate
      * @param customer
+     * @return 
      */
-    public void addAccount(String number, String name, double rate,Customer customer) {
-        this.accounts.add(new Account(number, name, rate, customer));
+    public Account addAccount(String number, String name, double rate,Customer customer) {
+        Account ac = new Account(number, name, rate, customer);
+        this.accounts.add(ac);
+        return ac;
     }
     
-     public void addCustomer(int number, String firstName, String lastName) {
-        this.customers.add(new Customer(number, firstName, lastName));
+     public Customer addCustomer(int number, String firstName, String lastName) {
+        Customer cust = new Customer(number, firstName, lastName);
+        this.customers.add(cust);
+        return cust;
     }
 
 }
