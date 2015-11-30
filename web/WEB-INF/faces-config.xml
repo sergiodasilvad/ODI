@@ -3,5 +3,49 @@
               xmlns="http://xmlns.jcp.org/xml/ns/javaee"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
-
+              
+    <application>
+        <locale-config>
+            <default-locale>fr</default-locale>
+            <supported-locale>fr</supported-locale>
+            <supported-locale>en</supported-locale>
+        </locale-config>
+        
+        <resource-bundle>
+            <base-name>ch.hearc.ig.odi.customeraccount.internationalization.msg</base-name>
+            <var>msg</var>
+        </resource-bundle>
+    </application>
+    
+    <navigation-rule>
+        <from-view-id>/creationCustomer.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/creationCustomerOk.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/listeCustomer.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/detailCustomer.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+   <navigation-rule>
+        <from-view-id>/detailCustomer.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/detailAccount.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/detailAccount.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/detailCustomer.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

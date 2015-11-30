@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Détail du compte</title>
+    </h:head>
+    <h:body>
+        <h1>Détail du compte</h1>
+        <h:outputText value="Numéro: "/>
+        <h:outputText styleClass="output" value="#{accountDetailBean.account.number}"/><br />
+        <h:outputText value="Libellé: "/>
+        <h:outputText styleClass="output" value="#{accountDetailBean.account.name}"/><br />
+        <h:outputText value="Solde: "/>
+        <h:outputText styleClass="output" value="#{accountDetailBean.account.balance}"/><br />
+        <h:outputText value="Taux d'intérêt: "/>
+        <h:outputText styleClass="output" value="#{accountDetailBean.account.rate}"/><br />
+        <h:form>   
+            <h:commandButton value="Retour au client" action="#{accountDetailBean.returnToCustomer()}"></h:commandButton>
+        </h:form>
+        <h:button value="Retour à la page d'accueil" outcome="/listeCustomer.xhtml" />
+    </h:body>
+</html>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Détail du client</title>
+    </h:head>
+    <h:body>
+        <h1>Détail du client</h1>
+        <h:outputText value="Numéro: "/>
+        <h:outputText styleClass="output" value="#{customerDetailBean.customer.number}"/><br />
+        <h:outputText value="Prénom: "/>
+        <h:outputText styleClass="output" value="#{customerDetailBean.customer.firstName}"/><br />
+        <h:outputText value="Nom: "/>
+        <h:outputText styleClass="output" value="#{customerDetailBean.customer.lastName}"/>
+        
+        <h2>Liste des comptes du client</h2>
+        <h:form>
+            <h:dataTable var="account" value="#{customerDetailBean.accounts}"  >                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nom"/>  
+                    </f:facet>
+                    <h:outputText value="#{account.name}"/>  
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Solde"/>  
+                    </f:facet>
+                    <h:outputText value="#{account.balance}"/>  
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Taux"/>  
+                    </f:facet>
+                    <h:outputText value="#{account.rate}"/>  
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Action"/>  
+                    </f:facet>
+                    <h:commandLink value="Détail" action="#{customerDetailBean.detailAccount(account)}"></h:commandLink>
+                </h:column>
+            </h:dataTable>
+            <h:button value="Retour à la page d'accueil" outcome="/listeCustomer.xhtml" />
+        </h:form>
+    </h:body>
+</html>
