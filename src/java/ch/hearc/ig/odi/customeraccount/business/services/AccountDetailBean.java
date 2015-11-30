@@ -24,58 +24,23 @@ public class AccountDetailBean implements Serializable{
 
     @Inject Services services;
 
-    //private Customer customer;
-    private int numCustomer;
-    private String number;
-    private String name;
-    private double balance;
-    private double rate;
+    private Account account;
+    
+    public AccountDetailBean(){
+        
+    }
 
     public String returnToCustomer(){
         CustomerBean customerBean = Tools.findBean("customerBean", CustomerBean.class);
-        customerBean.displayCustomer(numCustomer);
+        customerBean.displayCustomer(account.getCustomer());
         return "success";
     }
 
-    public int getNumCustomer() {
-        return numCustomer;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setNumCustomer(int numCustomer) {
-        this.numCustomer = numCustomer;
-    }    
-    
-   
-    public String getNumber() {
-        return number;
+    public void setAccount(Account account) {
+        this.account = account;
     }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-    public double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
-    public double getRate() {
-        return rate;
-    }
-
-    public void setRate(double rate) {
-        this.rate = rate;
-    }
-
 }

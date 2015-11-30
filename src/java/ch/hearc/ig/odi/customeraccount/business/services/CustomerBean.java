@@ -42,21 +42,17 @@ public class CustomerBean implements Serializable{
     
     /**
      * Affiche le détail d'un client
-     * 1. Récupération du bean pouvant afficher le détail du client (customerDetailBean)
-     * 2. Récupère le client par son numero et set le customerDetailBean
-     * 3. Retourne de la chaine succès pour une redirection
+     * Récupération du bean qui affiche le détail du client (customerDetailBean)
+     * Récupère le client par son numero et set le customerDetailBean
+     * Retourne de la chaine succès pour la redirection
      * @param number
      * @return
      */
-    public String displayCustomer(int number){
+    public String displayCustomer(Customer customer){
         CustomerDetailBean customerDetailBean = Tools.findBean("customerDetailBean", CustomerDetailBean.class);
-        
-        Customer customer = services.getCustomer(number);        
-        customerDetailBean.setNumber(customer.getNumber());
-        customerDetailBean.setFirstName(customer.getFirstName());
-        customerDetailBean.setLastName(customer.getLastName());
-        customerDetailBean.setAccounts(new ArrayList(customer.getAccounts().values()));
+        customerDetailBean.setCustomer(customer);
         
         return "success";
     }
 }
+

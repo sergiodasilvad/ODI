@@ -4,11 +4,10 @@ import java.util.*;
 
 public class Bank {
 
-    
     private int number;
     private String name;
-    private Collection<Account> accounts;
-    private Collection<Customer> customers;
+    private Map<String, Account> accounts;
+    private Map<Integer, Customer> customers;
 
     public Bank() {
     }
@@ -18,10 +17,12 @@ public class Bank {
      * @param number
      * @param name
      */
-    
     public Bank(int number, String name) {
         this.number = number;
         this.name = name;
+
+        customers = new HashMap<Integer, Customer>();
+        accounts = new HashMap<String, Account>();
     }
 
     public int getNumber() {
@@ -32,7 +33,6 @@ public class Bank {
         this.number = number;
     }
 
-    
     /**
      *
      * @param number
@@ -40,53 +40,52 @@ public class Bank {
      */
     public Account getAccountByNumber(String number) {
         Account anAccount = new Account();
-        for (Account ac : accounts) {
-            if (ac.getNumber().equals(number)) {
-                anAccount = ac;
-            }
+
+        if (accounts.containsKey(number)) {
+            anAccount = accounts.get(number);
         }
-       
+
         return anAccount;
     }
-    
+
     public Customer getCustomerByNumber(int number) {
         Customer aCustomer = new Customer();
-        for (Customer cust : customers) {
-            if (cust.getNumber() == number) {
-                aCustomer = cust;
-            }
+
+        if (customers.containsKey(number)) {
+            aCustomer = customers.get(number);
         }
-       
+
         return aCustomer;
     }
 
-    public Collection<Account> getAccounts() {
+    public Map<String, Account> getAccounts() {
         return accounts;
     }
 
-    public Collection<Customer> getCustomers() {
+    public Map<Integer, Customer> getCustomers() {
         return customers;
     }
-    
-    
+
     /**
      *
      * @param number
      * @param name
      * @param rate
      * @param customer
-     * @return 
+     * @return
      */
-    public Account addAccount(String number, String name, double rate,Customer customer) {
-        Account ac = new Account(number, name, rate, customer);
-        this.accounts.add(ac);
-        return ac;
+    public Account addAccount(String number, String name, double rate, Customer customer) {
+        customer.addAccount(number, name, rate);
+        return accounts.put(number, customer.getAccountByNumber(number));
     }
-    
-     public Customer addCustomer(int number, String firstName, String lastName) {
-        Customer cust = new Customer(number, firstName, lastName);
-        this.customers.add(cust);
-        return cust;
+
+    public Customer addCustomer(int number, String firstName, String lastName) {
+        Customer customer = new Customer(number, firstName, lastName);
+        return customers.put(customer.getNumber(), customer);
+    }
+
+    public void addCustomer(Customer customer) {
+        customers.put(customer.getNumber(), customer);
     }
 
 }
