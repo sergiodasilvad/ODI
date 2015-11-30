@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Customer {
 
-    private Collection<Account> accounts;
+    private Map<String, Account> accounts;
     private int number;
     private String firstName;
     private String lastName;
@@ -46,7 +46,7 @@ public class Customer {
         this.number = number;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.accounts = new ArrayList<>();
+        this.accounts = new HashMap<String, Account>();
     }
 
     /**
@@ -55,14 +55,7 @@ public class Customer {
      * @return
      */
     public Account getAccountByNumber(String number) {
-        Account anAccount = new Account();
-        for (Account ac : accounts) {
-            if (ac.getNumber().equals(number)) {
-                anAccount = ac;
-            }
-        }
-       
-        return anAccount;
+        return accounts.get(number);
     }
 
     /**
@@ -72,7 +65,15 @@ public class Customer {
      * @param rate
      */
     public void addAccount(String number, String name, double rate) {
-        this.accounts.add(new Account(number, name, rate, this));
+         accounts.put(number, new Account(number, name, rate, this));
     }
 
+    public Map<String, Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(Map<String, Account> accounts) {
+        this.accounts = accounts;
+    }
+    
 }
