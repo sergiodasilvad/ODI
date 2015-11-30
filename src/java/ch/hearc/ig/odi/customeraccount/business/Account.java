@@ -66,6 +66,12 @@ public class Account {
         this.customer = customer;
     }
 
+    public Account(Customer customer, String number, String name) {
+        this.customer = customer;
+        this.number = number;
+        this.name = name;
+    }
+
     /**
      *
      * @param amount

@@ -1,6 +1,10 @@
 package ch.hearc.ig.odi.customeraccount.business;
 
-import java.util.*;
+import java.util.HashSet;
+import ch.hearc.ig.odi.customeraccount.business.Customer;
+import ch.hearc.ig.odi.customeraccount.business.Account;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Bank {
 
@@ -72,20 +76,32 @@ public class Bank {
      * @param name
      * @param rate
      * @param customer
-     * @return
      */
-    public Account addAccount(String number, String name, double rate, Customer customer) {
+    public void addAccount(String number, String name, double rate, Customer customer) {
         customer.addAccount(number, name, rate);
-        return accounts.put(number, customer.getAccountByNumber(number));
+        accounts.put(number, customer.getAccountByNumber(number));
     }
 
-    public Customer addCustomer(int number, String firstName, String lastName) {
+    public void addCustomer(int number, String firstName, String lastName) {
         Customer customer = new Customer(number, firstName, lastName);
-        return customers.put(customer.getNumber(), customer);
+        customers.put(customer.getNumber(), customer);
     }
 
     public void addCustomer(Customer customer) {
         customers.put(customer.getNumber(), customer);
     }
+    
+    public void CreateCustomers(){
+            Customer cust = new Customer(1, "Jean", "Dupont");
+            addCustomer(cust);
+            addAccount("1", "Salaire", 0.001, cust);
+            addAccount("2", "Impots", 0.002, cust);
+            
+            Customer cust2 = new Customer(2, "Marie", "Froideveau");
+            addCustomer(cust2);
+            addAccount("3", "Epargne", 0.002, cust2);
+            addAccount("4", "Salaire", 0.001, cust2);
+            
+        }
 
 }

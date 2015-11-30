@@ -64,8 +64,8 @@ public class Customer {
      * @param name
      * @param rate
      */
-    public Account addAccount(String number, String name, double rate) {
-         return accounts.put(number, new Account(number, name, rate, this));
+    public void addAccount(String number, String name, double rate) {
+       accounts.put(number, new Account(number, name, rate, this));
     }
     
     public Map<String, Account> getAccounts() {
