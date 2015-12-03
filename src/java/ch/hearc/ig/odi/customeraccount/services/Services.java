@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ch.hearc.ig.odi.customeraccount.business.services;
+package ch.hearc.ig.odi.customeraccount.services;
 
 import ch.hearc.ig.odi.customeraccount.business.Bank;
 import ch.hearc.ig.odi.customeraccount.business.Customer;
@@ -22,7 +22,7 @@ import javax.enterprise.context.SessionScoped;
  * @author julien.plumez
  */
 @SessionScoped
-@Stateful
+@Stateful // Quand ce n'est pas un bean, ilaut spécifier Stateful ou stateless le @Named et @SessionScoped permet de ne pas spécifier pour le bean
 public class Services implements Serializable {
 
     private Bank bank;
