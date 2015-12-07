@@ -12,7 +12,7 @@
         </locale-config>
         
         <resource-bundle>
-            <base-name>ch.hearc.ig.odi.customeraccount.internationalization.msg</base-name>
+            <base-name>ch.hearc.ig.odi.customeraccount.presentation.bundle.msg</base-name>
             <var>msg</var>
         </resource-bundle>
     </application>
@@ -20,6 +20,7 @@
     <navigation-rule>
         <from-view-id>/createCustomer.xhtml</from-view-id>
         <navigation-case>
+            <from-action>#{customerCreateBean.addCustomer()}</from-action> 
             <from-outcome>success</from-outcome>
             <to-view-id>/createCustomerOk.xhtml</to-view-id>
         </navigation-case>
@@ -28,6 +29,7 @@
     <navigation-rule>
         <from-view-id>/customersList.xhtml</from-view-id>
         <navigation-case>
+            <from-action>#{customerBean.displayCustomer(customer)}</from-action> 
             <from-outcome>success</from-outcome>
             <to-view-id>/detailCustomer.xhtml</to-view-id>
         </navigation-case>
@@ -36,6 +38,7 @@
    <navigation-rule>
         <from-view-id>/detailCustomer.xhtml</from-view-id>
         <navigation-case>
+            <from-action>#{customerDetailBean.detailAccount(account)}</from-action> 
             <from-outcome>success</from-outcome>
             <to-view-id>/detailAccount.xhtml</to-view-id>
         </navigation-case>
@@ -44,6 +47,7 @@
     <navigation-rule>
         <from-view-id>/detailAccount.xhtml</from-view-id>
         <navigation-case>
+            <from-action>#{accountDetailBean.returnToCustomer()}</from-action> 
             <from-outcome>success</from-outcome>
             <to-view-id>/detailCustomer.xhtml</to-view-id>
         </navigation-case>
